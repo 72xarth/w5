@@ -4,6 +4,12 @@ import { conn } from "../dbconnect";
 
 export const router = express.Router();
 
+router.get("/", (req, res) => {
+  conn.query('select * from Stars_S', (err, result, fields)=>{
+    res.json(result);
+  });
+});
+
 router.get("/:name", (req, res) => {
     let responseData = {
       persons: [],
